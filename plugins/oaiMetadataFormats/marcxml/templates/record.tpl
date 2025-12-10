@@ -10,10 +10,10 @@
 <record
 	xmlns="http://www.loc.gov/MARC21/slim"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.loc.gov/MARC21/slim https://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
-	<leader>     nmb a2200000Iu 4500</leader>
+	xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+	<leader>     nab a2200000Iu 4500</leader>
 	{if $article->getDatePublished()}
-		<controlfield tag="008">"{$article->getDatePublished()|strtotime|date_format:"%y%m%d %Y"}                        eng  "</controlfield>
+		<controlfield tag="008">"{$article->getDatePublished()|strtotime|date_format:"%y%m%d %Y"}                        {$language}  "</controlfield>
 	{/if}
 	{if $journal->getData('onlineIssn')}
 		<datafield tag="022" ind1="#" ind2="#">
@@ -41,7 +41,7 @@
 
 	{assign var=authors value=$article->getAuthors()}
 	{foreach from=$authors item=author}
-		<datafield tag="{if $authors|@count==1}100{else}720{/if}" ind1="1" ind2=" ">
+		<datafield tag="{if $authors|@count==1}100{else}700{/if}" ind1="1" ind2=" ">
 			<subfield code="a">{$author->getFullName(false, true)|escape}</subfield>
 			{assign var=affiliation value=$author->getAffiliation($journal->getPrimaryLocale())}
 			{if $affiliation}<subfield code="u">{$affiliation|escape}</subfield>{/if}
@@ -81,8 +81,10 @@
 		<subfield code="u">{url journal=$journal->getPath() page="article" op="view" path=$article->getBestId()|escape}</subfield>
 	</datafield>
 
-	<datafield tag="786" ind1="0" ind2=" ">
-		<subfield code="n">{$journal->getName($journal->getPrimaryLocale())|escape}; {$issue->getIssueIdentification()|escape}</subfield>
+	<datafield tag="773" ind1="0" ind2=" ">
+		<subfield code="p">{$journal->getLocalizedSetting('abbreviation')|escape}</subfield>
+		<subfield code="t">{$journal->getLocalizedPageHeaderTitle()|escape}</subfield>
+		<subfield code="x">{$journal->getData('onlineIssn')|escape}</subfield>
 	</datafield>
 
 	<datafield tag="546" ind1=" " ind2=" ">
