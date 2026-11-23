@@ -2441,3 +2441,15 @@ msgstr "Vælg hvordan artiklerne ordnes i denne kategori."
 
 msgid "search.journal"
 msgstr "Efter tidsskrift"
+
+msgid "manager.setup.enableEnrollmentMasthead"
+msgstr "Brugerrollebaseret redaktionel kolofon"
+
+msgid "manager.setup.enableEnrollmentMastheadReviewers.enable"
+msgstr "Aktiver af bedømmere automatisk oplistes i den redaktionelle kolofon"
+
+msgid "manager.setup.enableEnrollmentMasthead.description"
+msgstr "Hvis ønsket kan der automatisk genereres en redaktionel kolofon ud fra de brugere, der har en redaktionel rolle i systemet inklusiv start- og slutdatoer for tildelingen til den rolle. Se også Indstillinger > Tidsskrift > Kolofon."
+
+msgid "manager.setup.enableEnrollmentMasthead.enable"
+msgstr "Fremvis en redaktionel kolofon baseret på tildeling i specifikke brugerroller"
